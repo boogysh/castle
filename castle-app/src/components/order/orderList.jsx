@@ -20,7 +20,8 @@ export default function OrderList(props) {
   return isLoading ? (
     <Loader />
   ) : (
-    <section className={props.isClosed ? "orderList" : "orderList hidden"}>
+    // <section className={props.isClosed ? "orderList" : "orderList hidden"}>
+    <section className="orderList">
       <h2 className="orderList_h2">La liste des vos commandes:</h2>
       <button onClick={props.closeOrderList} className="orderList_btn_close">
         x

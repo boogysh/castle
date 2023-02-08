@@ -24,13 +24,13 @@ export default function Cart() {
   //------- Price without solde----------------------
   useEffect(() => {
     // const totals = () => {
-      let totalPrice = 0;
-      data.map((e) => {
-        return (totalPrice = e.price * e.qty + totalPrice);
-      });
-      setTotalPrice(totalPrice);
+    let totalPrice = 0;
+    data.map((e) => {
+      return (totalPrice = e.price * e.qty + totalPrice);
+    });
+    setTotalPrice(totalPrice);
     // };
-  },[data])
+  }, [data]);
 
   // useEffect(() => {
 
@@ -116,13 +116,6 @@ export default function Cart() {
       payload: carts,
     });
   };
-  // const [isClosed, setIsClosed] = useState("hidden");
-  // const closeOrderList = () => {
-  //   setIsClosed(isClosed === "hidden" ? "" : "hidden");
-  // };
-  // const openOrderList = () => {
-  //   setIsClosed("");
-  // };
   const [isClosed, setIsClosed] = useState(false);
   const closeOrderList = () => {
     setIsClosed(!isClosed);
@@ -189,11 +182,13 @@ export default function Cart() {
               openOrderList={openOrderList}
             />
           </div>
-          <OrderList
-            email={findEmail}
-            closeOrderList={closeOrderList}
-            isClosed={isClosed}
-          />
+          {isClosed && (
+            <OrderList
+              email={findEmail}
+              closeOrderList={closeOrderList}
+              isClosed={isClosed}
+            />
+          )}
         </div>
 
         {console.log("findEmail:", findEmail)}

@@ -369,13 +369,13 @@ header p {
     padding-left: 20px;
     padding-right: 20px;
   }
-  .banner_solde{
+  .banner_solde {
     margin-top: 20px;
     width: 50px;
-  height: 50px;
+    height: 50px;
   }
   .banner_solde h3,
-  .banner_solde h4{
+  .banner_solde h4 {
     font-size: 0.7rem;
   }
   header p {
@@ -408,13 +408,13 @@ header p {
     width: 25px;
     height: 25px;
   }
-  .banner_solde{
+  .banner_solde {
     margin-top: 15px;
     width: 45px;
-  height: 45px;
+    height: 45px;
   }
   .banner_solde h3,
-  .banner_solde h4{
+  .banner_solde h4 {
     font-size: 0.65rem;
   }
 }
@@ -1736,7 +1736,7 @@ textarea {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 320px){
+@media screen and (max-width: 320px) {
   .contact button {
     width: 140px;
     height: 40px;
@@ -1744,7 +1744,7 @@ textarea {
     font-size: 1.1rem;
     margin: 20px auto;
   }
-  .contact_input{
+  .contact_input {
     font-size: 0.8rem;
   }
   .p_star {
@@ -2426,6 +2426,11 @@ input:focus {
 .orderList_wrapper {
   width: 80%;
   height: auto;
+}
+.orderListResult{
+  width: 100%;
+  height: auto;
+  min-height: 400px;
 }
 .orderList {
   display: flex;

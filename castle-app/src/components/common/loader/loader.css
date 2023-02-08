@@ -6,7 +6,7 @@
   }
   .loader{
     position: absolute;
-    top: 40%;
+    top: 45%;
     width: 64px;
     height: 64px;
     border: 6px solid  var(--primary);

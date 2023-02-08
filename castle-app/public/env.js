@@ -1,8 +1,10 @@
 window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "AMDRMSDKPATH": "C:\\Program Files\\AMD\\RyzenMasterSDK\\",
+  "API_URL_MSG": "https://castle-2nsbzhgm8-boogysh.vercel.app/api/messages",
+  "API_URL_ORDER": "https://castle-2nsbzhgm8-boogysh.vercel.app/api/commandes",
   "APPDATA": "C:\\Users\\bugav\\AppData\\Roaming",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\LOCAL\\crashpad_8444_ZQGXKBFGOBTPQDQL",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\LOCAL\\crashpad_10448_NLOADIMEAVQZUAPZ",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",
   "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
@@ -76,7 +78,7 @@ window.env = {
   "OnlineServices": "Online Services",
   "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
   "OS": "Windows_NT",
-  "Path": "C:\\Users\\bugav\\AppData\\Local\\Temp\\yarn--1675876530831-0.8027889203916754;D:\\D\\PROJET_N_00_Buga_VIctor\\castle-app\\node_modules\\.bin;C:\\Users\\bugav\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Users\\bugav\\AppData\\Local\\Yarn\\bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\bugav\\AppData\\Local\\Microsoft\\WindowsApps;;C:\\Users\\bugav\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\bugav\\AppData\\Roaming\\npm",
+  "Path": "C:\\Users\\bugav\\AppData\\Local\\Temp\\yarn--1675888765958-0.4774705581426233;D:\\D\\PROJET_N_00_Buga_VIctor\\castle-app\\node_modules\\.bin;C:\\Users\\bugav\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Users\\bugav\\AppData\\Local\\Yarn\\bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\bugav\\AppData\\Local\\Microsoft\\WindowsApps;;C:\\Users\\bugav\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\bugav\\AppData\\Roaming\\npm",
   "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
   "platformcode": "M7",
   "PROCESSOR_ARCHITECTURE": "AMD64",
@@ -98,7 +100,6 @@ window.env = {
   "TERM_PROGRAM": "vscode",
   "TERM_PROGRAM_VERSION": "1.75.0",
   "TMP": "C:\\Users\\bugav\\AppData\\Local\\Temp",
-  "URL_MSG_POST": "https://chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages",
   "USERDOMAIN": "BOOGYSH",
   "USERDOMAIN_ROAMINGPROFILE": "BOOGYSH",
   "USERNAME": "bugav",
@@ -106,7 +107,7 @@ window.env = {
   "VSCODE_GIT_ASKPASS_EXTRA_ARGS": "--ms-enable-electron-run-as-node",
   "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\bugav\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
   "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\bugav\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
-  "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-6ddc552f75-sock",
+  "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-206073f562-sock",
   "windir": "C:\\WINDOWS",
   "YARN_WRAP_OUTPUT": "false"
 };
