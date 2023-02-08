@@ -2,18 +2,14 @@ import React, { useEffect, useState } from "react";
 import OrderList from "./orderList";
 import { useSelector } from "react-redux";
 import Banner from "../home/banner";
-import Error500 from "../errors/Error500";
+//import Error500 from "../errors/Error500";
 //import Loader from "../common/loader/loader";
 import { UseFetch } from "../../hooks/useFetch";
 import { nanoid } from "nanoid";
-//import env from "react-dotenv";
+import env from "react-dotenv";
 
 export default function OrderPageConfirmation() {
-  // const { data, error } = UseFetch(`${env.API_HOST}/api/commandes`);
-  const { data, error } = UseFetch(
-    `https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/commandes/`
-  );
-  
+  const { data } = UseFetch(`${env.API_URL_ORDER}`);
   const { email } = useSelector((state) => state.cartReducer);
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -30,9 +26,9 @@ export default function OrderPageConfirmation() {
     window.location.href = "/";
   };
 
-  if (error) {
-    return <Error500 />;
-  }
+  // if (error) {
+  //   return <Error500 />;
+  // }
 
   return (
     show && (

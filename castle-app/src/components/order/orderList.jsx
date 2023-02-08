@@ -1,5 +1,5 @@
 import React from "react";
-//import env from "react-dotenv";
+import env from "react-dotenv";
 
 import { UseFetch } from "../../hooks/useFetch";
 import Error500 from "../errors/Error500";
@@ -12,8 +12,7 @@ export default function OrderList(props) {
   //   const { email } = useSelector((state) => state.cartReducer);
   const { data, isLoading, error } = UseFetch(
     //`http://localhost:4000/api/commandes`
-    "https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/commandes/"
-    //`${env.API_HOST}/api/commandes`
+    `${env.API_URL_ORDER}`
   );
 
   if (error) return <Error500 />;
@@ -41,16 +40,24 @@ export default function OrderList(props) {
                 )} ${``} ${order.createdAt.slice(11, 19)} `}
                 content={
                   <div>
-                    <h4 key={nanoid()}>{`Email : ${order.clientInfo.email}`}</h4>
+                    <h4
+                      key={nanoid()}
+                    >{`Email : ${order.clientInfo.email}`}</h4>
                     {order.orderInfo.map((item, index) => {
                       return (
                         <div key={nanoid()}>
-                          <h4 key={nanoid()}>{`Cartes : ${item.id} - ${item.qty}`}</h4>
+                          <h4
+                            key={nanoid()}
+                          >{`Cartes : ${item.id} - ${item.qty}`}</h4>
                         </div>
                       );
                     })}
-                    <h4 key={nanoid()}>{`Prix total de la commande : ${order.totalPrice} €`}</h4>
-                    <h4 key={nanoid()}>{`Commande effectué le: ${order.createdAt.slice(
+                    <h4
+                      key={nanoid()}
+                    >{`Prix total de la commande : ${order.totalPrice} €`}</h4>
+                    <h4
+                      key={nanoid()}
+                    >{`Commande effectué le: ${order.createdAt.slice(
                       0,
                       10
                     )}  à : ${order.createdAt.slice(11, 19)}`}</h4>

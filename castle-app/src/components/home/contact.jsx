@@ -130,7 +130,7 @@ export default function Contact(props) {
     if ((isFN, isLN, isEmail, isTel, isMsg)) {
       //fetch("http://localhost:4000/api/messages/", {
       // fetch(`${env.API_HOST}/api/messages/`, {
-      fetch( `${env.URL_MSG_POST}`, {
+      fetch( `${env.API_URL_MSG}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactMsg),
