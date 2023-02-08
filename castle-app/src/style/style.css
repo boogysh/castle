@@ -1191,7 +1191,7 @@ br {
 #tarifs {
   padding-top: 40px;
   margin-bottom: 0px;
-  border-bottom: 2px solid black;
+  
   /* position: relative;
   bottom: 380px; */
 }
@@ -1202,7 +1202,7 @@ br {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  /* margin-bottom: 0px; */
 }
 .tarifs h3 {
   padding: 40px 0;
@@ -1212,15 +1212,15 @@ br {
 }
 
 .cartes {
-  width: 340px;
+  width: 325px;
   box-shadow: 0 0 10px #333;
   margin: 0 15px 30px 15px;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
 }
-.cartes:last-of-type {
+/* .cartes:last-of-type {
   margin-bottom: 0;
-}
+} */
 .cartes:hover {
   box-shadow: 0 0 20px #333;
 }
@@ -1292,6 +1292,11 @@ br {
   border-radius: 999px;
   background: rgba(211, 211, 211, 0.493);
   box-shadow: 0px 0px 5px grey;
+  border: none;
+
+}
+#valide_panier a{
+  text-decoration: none;
   border: none;
 }
 #valide_panier {
@@ -1366,6 +1371,12 @@ br {
   border: none;
   width: 100%;
 }
+button{
+  border-bottom:none;
+}
+  
+
+ 
 @media screen and (max-width: 480px) {
   #tarifs {
     padding-top: 0;
