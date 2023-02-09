@@ -225,7 +225,6 @@ header {
   background-image: url(../assets/images-ext/entree_chateau.jpg);
   background-size: cover;
   background-position: center;
-  background-position: top;
   height: 400px;
   width: 100%;
   position: relative;
@@ -994,7 +993,7 @@ br {
   background-image: url(../assets/images-ext/porte_doree.jpg);
   background-position: bottom;
 }
-.etang_carpes{
+.etang_carpes {
   background-image: url(../assets/images-ext/ext_2.jpg);
   /* background-position: bottom; */
 }
@@ -1620,9 +1619,11 @@ label {
   border-radius: 5px;
   outline: none;
   width: 100%;
-  border-bottom: 2px solid #aaa;
   font-size: 1.2rem;
   padding: 20px 10px 5px 10px;
+}
+.contact_input.borderRed {
+  border: 2px solid red;
 }
 .container_input_p {
   display: flex;

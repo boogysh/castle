@@ -6,10 +6,15 @@ import env from "react-dotenv";
 
 export default function Contact(props) {
   const [isFN, setFN] = useState(null);
+  const [isFNBorderRed, setFNBorderRed] = useState(false);
   const [isLN, setLN] = useState(null);
+  const [isLNBorderRed, setLNBorderRed] = useState(false);
   const [isTel, setTel] = useState(null);
+  const [isTelBorderRed, setTelBorderRed] = useState(false);
   const [isEmail, setEmail] = useState(null);
+  const [isEmailBorderRed, setEmailBorderRed] = useState(false);
   const [isMsg, setMsg] = useState(null);
+  const [isMsgBorderRed, setMsgBorderRed] = useState(false);
 
   const contactMsg = {
     firstName: `${isFN}`,
@@ -33,6 +38,7 @@ export default function Contact(props) {
     } else if (matched) {
       FN_ErrMsg.innerHTML = "";
       setFN(val);
+      setFNBorderRed(false);
     } else if (!matched) {
       FN_ErrMsg.innerHTML = FN.adviceContent;
       setFN("");
@@ -49,6 +55,7 @@ export default function Contact(props) {
     } else if (matched) {
       LN_ErrMsg.innerHTML = "";
       setLN(val);
+      setLNBorderRed(false);
     } else if (!matched) {
       LN_ErrMsg.innerHTML = LN.adviceContent;
       setLN("");
@@ -67,6 +74,7 @@ export default function Contact(props) {
     } else if (matched) {
       EMAIL_ErrMsg.innerHTML = "";
       setEmail(val);
+      setEmailBorderRed(false);
     } else if (!matched) {
       EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
       setEmail("");
@@ -97,6 +105,7 @@ export default function Contact(props) {
     } else if (matched) {
       TEL_ErrMsg.innerHTML = "";
       setTel(val);
+      setTelBorderRed(false);
     } else if (!matched) {
       TEL_ErrMsg.innerHTML = TEL.adviceContent;
       setTel("");
@@ -116,31 +125,40 @@ export default function Contact(props) {
     } else if (matched) {
       MSG_ErrMsg.innerHTML = "";
       setMsg(val);
+      setMsgBorderRed(false);
     } else if (!matched) {
       MSG_ErrMsg.innerHTML = MSG.adviceContent;
       setMsg("");
     }
   };
-  
-  //----------------------------
 
+  //-----------SET BORDER RED-----------------
+  const borderRed = () => {
+    !isFN && setFNBorderRed(true);
+    !isLN && setLNBorderRed(true);
+    !isTel && setTelBorderRed(true);
+    !isEmail && setEmailBorderRed(true);
+    !isMsg && setMsgBorderRed(true);
+  };
+  //-----------MESSAGE-POST-----------------------------
   const messagePost = () => {
     // const urlMsgPost =
     //   "https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages";
-    if ((isFN, isLN, isEmail, isTel, isMsg)) {
+    if (isFN && isLN && isEmail && isTel && isMsg) {
       //fetch("http://localhost:4000/api/messages/", {
       // fetch(`${env.API_HOST}/api/messages/`, {
-      fetch( `${env.API_URL_MSG}`, {
+      fetch(`${env.API_URL_MSG}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactMsg),
       });
       props.msgConfirm();
+    } else {
+      borderRed();
     }
     // window.location.href("/");
   };
-  console.log("env:",env.URL_MSG_POST)
-
+  console.log("env:", env.URL_MSG_POST);
 
   //-----------------------------
   return (
@@ -150,10 +168,14 @@ export default function Contact(props) {
         <form method="post">
           <div className="FN_and_LN">
             <label htmlFor="prenom">Prénom</label>
+
             <div className="container_input_p">
               <input
                 onChange={matchFirstName}
-                className="contact_input"
+                // className="contact_input borderRed"
+                className={
+                  isFNBorderRed ? "contact_input borderRed" : "contact_input "
+                }
                 type="text"
                 name="prenom"
                 placeholder="Prénom"
@@ -169,7 +191,9 @@ export default function Contact(props) {
             <div className="container_input_p">
               <input
                 onChange={matchLastName}
-                className="contact_input"
+                className={
+                  isLNBorderRed ? "contact_input borderRed" : "contact_input "
+                }
                 type="text"
                 placeholder="Nom"
                 name="nom"
@@ -186,7 +210,9 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchEmail}
-              className="contact_input"
+              className={
+                isEmailBorderRed ? "contact_input borderRed" : "contact_input "
+              }
               type="email"
               placeholder="Email"
               // name="email"
@@ -201,7 +227,9 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchTel}
-              className="contact_input"
+              className={
+                isTelBorderRed ? "contact_input borderRed" : "contact_input "
+              }
               type="tel"
               placeholder="Telephone"
               name="tel"
@@ -219,6 +247,9 @@ export default function Contact(props) {
               onChange={matchMessage}
               placeholder="Votre message"
               required
+              className={
+                isMsgBorderRed ? "contact_input borderRed" : "contact_input "
+              }
             ></textarea>
             <span role="img" aria-label="star" className="star">
               ☆
