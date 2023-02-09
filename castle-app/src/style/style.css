@@ -994,6 +994,10 @@ br {
   background-image: url(../assets/images-ext/porte_doree.jpg);
   background-position: bottom;
 }
+.etang_carpes{
+  background-image: url(../assets/images-ext/ext_2.jpg);
+  /* background-position: bottom; */
+}
 .cour_dHonneur {
   background-image: url(../assets/images-ext/ext_3.jpg);
 }

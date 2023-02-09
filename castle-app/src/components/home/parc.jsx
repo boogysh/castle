@@ -32,7 +32,7 @@ export default function Parc() {
       <article className="article_content column_reverse">
         <a
           href={img2}
-          className="article_a la_porte_doree"
+          className="article_a etang_carpes"
           aria-label="L'étang aux Carpes"
         >
           {""}

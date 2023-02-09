@@ -1,58 +1,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   width: 100%;
-	height: auto;
-  display: flex;
-	flex-direction: column;
-	/* align-items: center; */
-	background-color: #f1f1f1;
-	
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-#root{
-  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  
-}
-a{
-  text-decoration: none;
-}
-h4{
-  font-weight: 400;
-}
-.padding_top_3rem{
-  padding-top: 3rem!important;
-}
-p{
-  min-height: 25px;
-  height: auto;
-}
-@media all and (max-width: 480px){
-  p{
-    font-size: 0.8rem;
-  }
-}
-  
-  
- 
+  background-color: #f1f1f1;
 
-body{
-  --primary:black;
-  
+  --primary: black;
+
   --card_1_bg: #ffafbf;
   --card_2_bg: #ff708d;
   --card_3_bg: #ff5274;
@@ -65,7 +27,34 @@ body{
   --input_focus: rgb(124, 220, 253);
   --btn_bg: #30c430df;
   --btn_bg_hover: #24db24;
-  
 }
-  
- 
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+#root {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+h4 {
+  font-weight: 400;
+}
+.padding_top_3rem {
+  padding-top: 3rem !important;
+}
+p {
+  min-height: 25px;
+  height: auto;
+}
+@media all and (max-width: 480px) {
+  p {
+    font-size: 0.8rem;
+  }
+}
