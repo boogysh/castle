@@ -221,13 +221,15 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
   background-image: url(../assets/images-ext/entree_chateau.jpg);
   background-size: cover;
   background-position: center;
-  height: 440px;
+  background-position: top;
+  height: 400px;
   width: 100%;
   position: relative;
-  top: -70px;
+  /* top: -70px; */
 }
 .bg-header {
   position: absolute;
@@ -256,19 +258,21 @@ header {
   width: 100%;
   height: auto;
   padding: 20px;
-  padding-top: 130px;
+  padding-top: 100px;
 }
 .titre img {
   display: block;
   width: 70px;
   height: 70px;
   margin-bottom: 10px;
+
   z-index: 5;
 }
 .banner_h1 {
   font-family: "Titre_H1", "Great_vibes";
   font-size: 5em;
   margin: 0;
+  margin-top: 0px;
   margin-left: 20px;
   color: rgb(210, 210, 210);
   text-shadow: 3px 3px 8px black;
@@ -303,9 +307,6 @@ header p {
 }
 
 @media screen and (max-width: 1200px) {
-  header {
-    height: 400px;
-  }
   header p {
     left: 20px;
     font-size: 1em;
@@ -317,7 +318,7 @@ header p {
 }
 @media screen and (max-width: 992px) {
   header {
-    height: 400px;
+    height: 360px;
   }
   .banner_h1 {
     font-size: 4em;
@@ -335,7 +336,7 @@ header p {
   header {
     /* position: inherit; */
     /* top: 0; */
-    height: 340px;
+    height: 320px;
     margin-bottom: 0;
   }
   .banner_h1 {
@@ -352,9 +353,9 @@ header p {
   }
 }
 @media screen and (max-width: 480px) {
-  .titre {
+  /* .titre {
     padding-top: 90px;
-  }
+  } */
   header {
     height: 280px;
   }
@@ -362,7 +363,6 @@ header p {
     font-size: 1.9rem;
     padding-left: 0px;
     margin-left: 5px;
-    /* padding-top: 70px; */
   }
   header h2 {
     font-size: 0.9rem;
@@ -387,10 +387,6 @@ header p {
     height: 30px;
     margin-top: 5px;
   }
-  /* header h2 {
-    font-size: 1em;
-    bottom: 130px;
-  } */
 }
 @media screen and (max-width: 320px) {
   header {
@@ -1191,7 +1187,7 @@ br {
 #tarifs {
   padding-top: 40px;
   margin-bottom: 0px;
-  
+
   /* position: relative;
   bottom: 380px; */
 }
@@ -1293,9 +1289,8 @@ br {
   background: rgba(211, 211, 211, 0.493);
   box-shadow: 0px 0px 5px grey;
   border: none;
-
 }
-#valide_panier a{
+#valide_panier a {
   text-decoration: none;
   border: none;
 }
@@ -1371,12 +1366,10 @@ br {
   border: none;
   width: 100%;
 }
-button{
-  border-bottom:none;
+button {
+  border-bottom: none;
 }
-  
 
- 
 @media screen and (max-width: 480px) {
   #tarifs {
     padding-top: 0;
@@ -2438,7 +2431,7 @@ input:focus {
   width: 80%;
   height: auto;
 }
-.orderListResult{
+.orderListResult {
   width: 100%;
   height: auto;
   min-height: 400px;
