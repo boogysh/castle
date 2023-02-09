@@ -3,3 +3,4 @@ page confirmation pendant 1000ms il faut que ca tourne le loader.
 requierd? envoyer formulaire vide?
 2 fichiers index.css
 header scroll????
+2portes doree????????
