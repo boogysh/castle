@@ -1,40 +1,61 @@
-import React from "react";
-import env from "react-dotenv";
+import React, { useState, useEffect } from "react";
+//import env from "react-dotenv";
 
-import { UseFetch } from "../../hooks/useFetch";
+//import { UseFetch } from "../../hooks/useFetch";
 import Error500 from "../errors/Error500";
 import Loader from "../../components/common/loader/loader";
+
 //import { v4 as uuidv4 } from "uuid";
 import { nanoid } from "nanoid";
 import DropDownOrderList from "../../components/dropDown/dropDownOrderList";
 
 export default function OrderList(props) {
-  //   const { email } = useSelector((state) => state.cartReducer);
-  const { data, isLoading, error } = UseFetch(
-    //`http://localhost:4000/api/commandes`
-    `${env.API_URL_ORDER}`
-  );
+  //const { data, isLoading, error} = UseFetch(`${env.REACT_APP_API_URL_ORDER}`);
+  // const { data } = UseFetch(
+  //   `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
+  // );
+  // if (error) return <Error500 />;
+  //---------------
+  const [data, setData] = useState({});
+  const [error, setError] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const url = `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`;
+  useEffect(() => {
+    if (!url) return;
+    setLoading(true);
+    async function fetchData() {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setData(data);
+      } catch (err) {
+        console.log(err);
+        setError(true);
+      }finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [url]);
+
+  //---------------
 
   if (error) return <Error500 />;
-
   return isLoading ? (
     <Loader />
   ) : (
-    // <section className={props.isClosed ? "orderList" : "orderList hidden"}>
     <section className="orderList">
       <h2 className="orderList_h2">La liste des vos commandes:</h2>
       <button onClick={props.closeOrderList} className="orderList_btn_close">
         x
       </button>
-
       {data.map((order) => {
-        // const EMAIL = email === order.clientInfo.email;
         const EMAIL = props.email === order.clientInfo.email;
 
         return (
           EMAIL && (
             <div className="orderList_wrapper">
-              <DropDownOrderList
+              <DropDownOrderList  key={nanoid()}
                 title={`Commande Nr: ${order._id} ${order.createdAt.slice(
                   0,
                   10

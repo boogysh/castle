@@ -2,6 +2,7 @@ ppartement a changer les href  de l'api
 chercher commandes: si c'st vide il trouve quand meme  faut changer.
 page confirmation pendant 1000ms il faut que ca tourne le loader.
 requierd? envoyer formulaire vide?
-contactez-nous add margin-top
+confirmation page margin padding
+required model api
 
 

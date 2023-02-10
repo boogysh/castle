@@ -1,77 +1,153 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import OrderList from "./orderList";
 import { useSelector } from "react-redux";
 import Banner from "../home/banner";
-//import Error500 from "../errors/Error500";
-//import Loader from "../common/loader/loader";
-import { UseFetch } from "../../hooks/useFetch";
+import img_search from "../../assets/icons/search.png";
+//-------
+import Error500 from "../errors/Error500";
+import Loader from "../common/loader/loader";
+//--------
 import { nanoid } from "nanoid";
-import env from "react-dotenv";
+import { EMAIL } from "../order/data/data.adviceClient";
+import { useDispatch } from "react-redux";
+//import { UseFetch } from "../../hooks/useFetch";
+//import env from "react-dotenv";
+//import Loader from "../common/loader/loader";
 
 export default function OrderPageConfirmation() {
-  const { data } = UseFetch(`${env.API_URL_ORDER}`);
-  const { email } = useSelector((state) => state.cartReducer);
-  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  // const { data } = UseFetch(
+  //   `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
+  // );
+
+  //---------------
+  const [data, setData] = useState({});
+  const [error, setError] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const url = `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`;
   useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 1000);
-  }, [show]);
+    if (!url) return;
+    setLoading(true);
+    async function fetchData() {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setData(data);
+      } catch (err) {
+        console.log(err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [url]);
+  //--------------
+  const { findEmail } = useSelector((state) => state.cartReducer);
+  // const [show, setShow] = useState(false);
+  console.log("data:", data);
+
+  //---------------------------------------------
+
+  const [isEmailToFind, setEmailToFind] = useState("");
+  console.log(isEmailToFind);
+
+  const matchEmailToFind = (e) => {
+    const val = e.target.value;
+    const EMAIL_ErrMsg = document.getElementById("orderFindErrorMsg");
+    const matched = val.match(
+      /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g
+    );
+    if (val.length === 0) {
+      EMAIL_ErrMsg.innerHTML = "";
+    } else if (val.length < 3 || val.length > 25) {
+      EMAIL_ErrMsg.innerHTML = EMAIL.adviceLength;
+      setEmailToFind("");
+    } else if (matched) {
+      EMAIL_ErrMsg.innerHTML = "";
+      setEmailToFind(val);
+      dispatch({
+        type: "FIND_EMAIL",
+        payload: val,
+      });
+    } else if (!matched) {
+      EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
+      setEmailToFind("");
+    }
+    dispatch({
+      type: "FIND_EMAIL",
+      payload: val,
+    });
+  };
+
   //----------------------------------------------
-  const [isClosed, setIsClosed] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const closeOrderList = () => {
-    setIsClosed(!isClosed);
+    setIsOpen(!isOpen);
   };
-  const redirectHome = () => {
-    window.location.href = "/";
+  const openOrderList = () => {
+    setIsOpen(true);
   };
+  // const redirectHome = () => {
+  //   window.location.href = "/";
+  // };
 
-  // if (error) {
-  //   return <Error500 />;
-  // }
+  if (error) {
+    return <Error500 />;
+  }
 
-  return (
-    show && (
-      <main id="orderPageConfirmation">
-        <Banner />
-        <div className="container_page container_page_OrderPageConfirmation">
-          <div className="orderPageConfirmation_content">
-            {data
-              .map((order, i) => {
-                return (
-                  <h1 key={nanoid()} className="orderPageConfirmation_h1">
-                    Commande validée! Votre numéro de commande: {order._id}
-                  </h1>
-                );
-              })
-              .slice(0, 1)}
-            <p className="orderPageConfirmation_content_p">
-              Pour savoir plus sur votre commande garder ce numéro.
-            </p>
-            <p className="orderPageConfirmation_content_p">
-              Vous pouvez, également chercher vos commandes avec votre email.
-            </p>
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <main id="orderPageConfirmation">
+      <Banner />
+      <div className="container_page container_page_OrderPageConfirmation">
+        <div className="orderPageConfirmation_content">
+          {data
+            .map((order) => {
+              return (
+                <h1 key={nanoid()} className="orderPageConfirmation_h1">
+                  Commande validée! Votre numéro de commande: {order._id}
+                </h1>
+              );
+            })
+            .slice(0, 1)}
+
+          <div>
+            <div className="orderFind_container">
+              <h5 className="orderFind_h5">Cherceher toutes vos commandes:</h5>
+              <div className="orderFind">
+                <p className="orderFind_p">SAISIR VOTRE ADRESSE E-MAIL :</p>
+                <p>Voir les commandes de: bugavictor86@gmail.com</p>
+                <div className="orderFind_email_container">
+                  <input
+                    type="text"
+                    onChange={matchEmailToFind}
+                    className="orderFind_email"
+                    placeholder="Votre email"
+                  />
+                  <button onClick={openOrderList} className="orderFind_btn">
+                    <img
+                      src={img_search}
+                      alt="search"
+                      className="orderFind_btn_searchPng"
+                    />
+                  </button>
+                </div>
+                <p id="orderFindErrorMsg" className="error"></p>
+              </div>
+            </div>
           </div>
 
-          <OrderList
-            email={email}
-            closeOrderList={closeOrderList && redirectHome}
-            isClosed={isClosed}
-          />
+          {isOpen && (
+            <OrderList
+              email={findEmail}
+              closeOrderList={closeOrderList}
+              isOpen={isOpen}
+            />
+          )}
         </div>
-      </main>
-    )
+      </div>
+    </main>
   );
 }
-
-/* <div id="order">
-        <h2 className="order_h2">Commande Nr: {id}</h2>
-        <h3>Le prix de la commande: {totalPrice} €</h3>
-        {orderDetails.map((item) => {
-          return (
-            <h3 key={uuidv4()}>
-              Cartes {item.id}: {item.qty}
-            </h3>
-          );
-        })}
-      </div> */

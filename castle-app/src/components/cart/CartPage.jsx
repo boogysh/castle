@@ -108,6 +108,7 @@ export default function Cart() {
     });
   }, [dispatch, totalPrice, solde]);
   //--------------------------------------
+  
 
   //----------------------------------
   const createOrderDetails = () => {
@@ -191,7 +192,7 @@ export default function Cart() {
           )}
         </div>
 
-        {console.log("findEmail:", findEmail)}
+        {/* {console.log("findEmail:", findEmail)} */}
       </section>
       {/* <Contact /> */}
     </main>

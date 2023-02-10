@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/panier" element={<CartPage />} />
         <Route path="/commande" element={<OrderPage />} />
-        <Route path="/commande/:id" element={<OrderPageConfirmation />} />
+        <Route path="/commande/confirmation" element={<OrderPageConfirmation />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <Footer />

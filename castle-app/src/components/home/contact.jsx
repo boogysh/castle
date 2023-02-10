@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { FN, LN, TEL, EMAIL, MSG } from "../order/data/data.adviceClient";
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
 export default function Contact(props) {
   const [isFN, setFN] = useState(null);
@@ -146,33 +146,35 @@ export default function Contact(props) {
     //   "https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages";
     if (isFN && isLN && isEmail && isTel && isMsg) {
       //fetch("http://localhost:4000/api/messages/", {
-      // fetch(`${env.API_HOST}/api/messages/`, {
-      fetch(`${env.API_URL_MSG}`, {
+     
+      // fetch(`${env.API_URL_MSG}`, {
+      fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(contactMsg),
       });
       props.msgConfirm();
-    } else {
-      borderRed();
+    }else{
+      borderRed()
     }
+    
     // window.location.href("/");
   };
-  console.log("env:", env.URL_MSG_POST);
+ 
 
   //-----------------------------
   return (
     <section className="contact" id="contact">
       <h4>Contactez nous...</h4>
       <div className="container-form">
-        <form method="post">
+        <form >
           <div className="FN_and_LN">
             <label htmlFor="prenom">Prénom</label>
 
             <div className="container_input_p">
               <input
                 onChange={matchFirstName}
-                // className="contact_input borderRed"
+                // className="contact_input"
                 className={
                   isFNBorderRed ? "contact_input borderRed" : "contact_input "
                 }
@@ -191,6 +193,7 @@ export default function Contact(props) {
             <div className="container_input_p">
               <input
                 onChange={matchLastName}
+                // className="contact_input"
                 className={
                   isLNBorderRed ? "contact_input borderRed" : "contact_input "
                 }
@@ -210,6 +213,7 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchEmail}
+              // className="contact_input"
               className={
                 isEmailBorderRed ? "contact_input borderRed" : "contact_input "
               }
@@ -217,6 +221,7 @@ export default function Contact(props) {
               placeholder="Email"
               // name="email"
               id="email"
+              required
             />
             <span role="img" aria-label="star" className="star">
               ☆
@@ -227,6 +232,7 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchTel}
+              // className="contact_input"
               className={
                 isTelBorderRed ? "contact_input borderRed" : "contact_input "
               }
@@ -247,6 +253,7 @@ export default function Contact(props) {
               onChange={matchMessage}
               placeholder="Votre message"
               required
+              // className="contact_input"
               className={
                 isMsgBorderRed ? "contact_input borderRed" : "contact_input "
               }
@@ -264,7 +271,8 @@ export default function Contact(props) {
             " sont obligatoires à remplir.
           </p>
           <Link to="/">
-            <button onClick={messagePost}>Envoyer</button>
+            <button  className="contact_btn"
+            onClick={messagePost}>Envoyer</button>
           </Link>
         </form>
       </div>

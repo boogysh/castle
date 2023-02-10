@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 //import { nanoid } from "nanoid";
 import Banner from "../home/banner";
-import env from "react-dotenv";
+//import env from "react-dotenv";
 
 export default function OrderPage() {
   const { orderDetails, totalPrice } = useSelector(
@@ -21,6 +21,12 @@ export default function OrderPage() {
   const [isAddress, setAddress] = useState("");
   const [isCity, setCity] = useState("");
   const [isEmail, setEmail] = useState("");
+
+  const [isFNBorderRed, setFNBorderRed] = useState(false);
+  const [isLNBorderRed, setLNBorderRed] = useState(false);
+  const [isAddressBorderRed, setAddressBorderRed] = useState(false);
+  const [isCityBorderRed, setCityBorderRed] = useState(false);
+  const [isEmailBorderRed, setEmailBorderRed] = useState(false);
 
   const client = {
     firstName: `${isFN}`,
@@ -41,6 +47,7 @@ export default function OrderPage() {
     } else if (matched) {
       FN_ErrMsg.innerHTML = "";
       setFN(val);
+      setFNBorderRed(false);
     } else if (!matched) {
       FN_ErrMsg.innerHTML = FN.adviceContent;
       setFN("");
@@ -57,6 +64,7 @@ export default function OrderPage() {
     } else if (matched) {
       LN_ErrMsg.innerHTML = "";
       setLN(val);
+      setLNBorderRed(false);
     } else if (!matched) {
       LN_ErrMsg.innerHTML = LN.adviceContent;
       setLN("");
@@ -74,6 +82,7 @@ export default function OrderPage() {
     } else if (matched) {
       ADDRESS_ErrMsg.innerHTML = "";
       setAddress(val);
+      setAddressBorderRed(false);
     } else if (!matched) {
       ADDRESS_ErrMsg.innerHTML = ADDRESS.adviceContent;
       setAddress("");
@@ -90,6 +99,7 @@ export default function OrderPage() {
     } else if (matched) {
       CITY_ErrMsg.innerHTML = "";
       setCity(val);
+      setCityBorderRed(false);
     } else if (!matched) {
       CITY_ErrMsg.innerHTML = CITY.adviceContent;
       setCity("");
@@ -108,6 +118,7 @@ export default function OrderPage() {
     } else if (matched) {
       EMAIL_ErrMsg.innerHTML = "";
       setEmail(val);
+      setEmailBorderRed(false);
     } else if (!matched) {
       EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
       setEmail("");
@@ -132,31 +143,49 @@ export default function OrderPage() {
     orderInfo: orderInfo,
     totalPrice: totalPrice,
   };
-  const orderPost = () => {
-    // createOrderNr()
-
-    // fetch("http://localhost:4000/api/commandes/", {
-    fetch(`${env.API_URL_ORDER}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(order),
-    });
-    dispatch({
-      type: "EMAIL",
-      payload: client.email,
-    });
-    dispatch({
-      type: "CLEAN_CART",
-      payload: [],
-    });
-    dispatch({
-      type: "SOLDE",
-      payload: 0,
-    });
-    // window.location.reload()
-
-    // window.location.href = "/commande/confirmation";
+  console.log(order);
+  //-----------SET BORDER RED-----------------
+  const borderRed = () => {
+    !isFN && setFNBorderRed(true);
+    !isLN && setLNBorderRed(true);
+    !isAddress && setAddressBorderRed(true);
+    !isCity && setCityBorderRed(true);
+    !isEmail && setEmailBorderRed(true);
   };
+  // const allValues = isFN && isLN && isAddress && isCity && isEmail;
+
+  const orderPost = (e) => {
+    e.preventDefault();
+    if (isFN && isLN && isAddress && isCity && isEmail) {
+      // fetch(`${env.API_URL_ORDER}`, {
+      fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order),
+      });
+      dispatch({
+        type: "EMAIL",
+        payload: client.email,
+      });
+      dispatch({
+        type: "CLEAN_CART",
+        payload: [],
+      });
+      dispatch({
+        type: "SOLDE",
+        payload: 0,
+      });
+    } else {
+      borderRed();
+    }
+    const redirectOrderConfirmation = async  () => {
+      await fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`);
+      window.location.href = "/commande/confirmation";
+    };
+    redirectOrderConfirmation()
+  };
+
+  
 
   return (
     <main id="orderPage">
@@ -164,19 +193,25 @@ export default function OrderPage() {
       <div className="container_page">
         <OrderForm
           id="orderForm"
-          submit={orderPost}
           matchFirstName={matchFirstName}
           matchLastName={matchLastName}
           matchAddress={matchAddress}
           matchCity={matchCity}
           matchEmail={matchEmail}
+          classFN={isFNBorderRed ? "contact_input borderRed" : "contact_input"}
+          classLN={isLNBorderRed ? "contact_input borderRed" : "contact_input "}
+          classAddress={
+            isAddressBorderRed ? "contact_input borderRed" : "contact_input"
+          }
+          classCity={
+            isCityBorderRed ? "contact_input borderRed" : "contact_input"
+          }
+          classEmail={
+            isEmailBorderRed ? "contact_input borderRed" : "contact_input"
+          }
+          submit={(e) => orderPost(e)}
+          // REQUIRE={isFN && isLN && isAddress && isCity && isEmail}
         />
-        {/* <OrderPageConfiramation
-        id="ordertDetails"
-        orderNr={order.orderNr}
-        totalPrice={totalPrice}
-        orderDetails={orderDetails}
-      /> */}
       </div>
     </main>
   );
