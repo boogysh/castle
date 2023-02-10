@@ -77,7 +77,9 @@ export default function Orderfind_ByEmail_byOrderNr(props) {
     <div className="orderFind_container">
       <h5 className="orderFind_h5">Chercher vos commandes:</h5>
       <div className="orderFind">
-        <p className="orderFind_p"><strong>Saisir votre e-mail où le nr. de commande :</strong></p>
+        <p className="orderFind_p">
+          <strong>Saisir votre e-mail où le nr. de commande :</strong>
+        </p>
         {/* <p>ADRESSE E-MAIL où NR DE COMMANDE:</p> */}
         <p>EX: bugavictor86@gmail.com</p>
         <p>EX: 63e61b3b69cbd5198b876894</p>
