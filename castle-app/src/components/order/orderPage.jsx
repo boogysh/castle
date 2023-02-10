@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-//import { useEffect } from "react";
 import { FN, LN, ADDRESS, CITY, EMAIL } from "./data/data.adviceClient";
-//import OrderPageConfiramation from "./orderPageConfirmation";
 import OrderForm from "./orderForm";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-//import { nanoid } from "nanoid";
 import Banner from "../home/banner";
 //import env from "react-dotenv";
 
@@ -152,11 +149,9 @@ export default function OrderPage() {
     !isCity && setCityBorderRed(true);
     !isEmail && setEmailBorderRed(true);
   };
-  // const allValues = isFN && isLN && isAddress && isCity && isEmail;
   const allValues = isFN && isLN && isAddress && isCity && isEmail;
   const orderPost = (e) => {
     e.preventDefault();
-    // if (isFN && isLN && isAddress && isCity && isEmail) {
     if (allValues) {
       // fetch(`${env.API_URL_ORDER}`, {
       fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`, {
@@ -211,8 +206,7 @@ export default function OrderPage() {
             isEmailBorderRed ? "contact_input borderRed" : "contact_input"
           }
           submit={(e) => orderPost(e)}
-          // REQUIRE={isFN && isLN && isAddress && isCity && isEmail}
-          // isValidate={allValues}
+          
         />
       </div>
     </main>

@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-//import env from "react-dotenv";
-
 //import { UseFetch } from "../../hooks/useFetch";
 import Error500 from "../errors/Error500";
 import Loader from "../../components/common/loader/loader";
-
-//import { v4 as uuidv4 } from "uuid";
 import { nanoid } from "nanoid";
 import DropDownOrderList from "../../components/dropDown/dropDownOrderList";
 
@@ -40,7 +36,9 @@ export default function OrderList(props) {
 
   //---------------
 
-  if (error) return <Error500 />;
+  if (error) {
+    return <Error500 />;
+  }
   return isLoading ? (
     <Loader />
   ) : (
@@ -52,12 +50,11 @@ export default function OrderList(props) {
       {data.map((order) => {
         const EMAIL = props.email === order.clientInfo.email;
         const ORDERNR = props.orderNr === order._id;
-        console.log("ORDERNR:",ORDERNR)
-        console.log("order._id:",order._id)
+        console.log("ORDERNR:", ORDERNR);
+        console.log("order._id:", order._id);
 
         return (
-          (EMAIL || ORDERNR)  && (
-          // ORDERNR && (
+          (EMAIL || ORDERNR) && (
             <div className="orderList_wrapper">
               <DropDownOrderList
                 key={nanoid()}

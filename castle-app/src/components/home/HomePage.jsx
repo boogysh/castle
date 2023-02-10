@@ -22,7 +22,6 @@ export default function Home() {
       <div className="container_page">
         <Presentation />
         <Introduction />
-        {/* <div id="parallax"></div> */}
         <Apparements />
         <Parc />
         <Tarifs />

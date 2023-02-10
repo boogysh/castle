@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { FN, LN, TEL, EMAIL, MSG } from "../order/data/data.adviceClient";
 //import env from "react-dotenv";
@@ -114,7 +113,6 @@ export default function Contact(props) {
   const matchMessage = (e) => {
     const val = e.target.value;
     const MSG_ErrMsg = document.getElementById("contactMessageErrorMsg");
-    // const matched = val.match(/^[a-zA-Z0-9~!@#$%^&*()`{};':,./<>?| ]*$/);
     const matched = val.match(
       /^[a-zA-Z0-9~!@#$%^&*()`{};':,./<>?|"+£¤áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ._\s-]+$/
     );
@@ -142,11 +140,9 @@ export default function Contact(props) {
   };
   //-----------MESSAGE-POST-----------------------------
   const messagePost = () => {
-    // const urlMsgPost =
-    //   "https:chateau-back-hk2hbrmct-boogysh.vercel.app/api/messages";
     if (isFN && isLN && isEmail && isTel && isMsg) {
       //fetch("http://localhost:4000/api/messages/", {
-     
+
       // fetch(`${env.API_URL_MSG}`, {
       fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/messages`, {
         method: "POST",
@@ -154,27 +150,23 @@ export default function Contact(props) {
         body: JSON.stringify(contactMsg),
       });
       props.msgConfirm();
-    }else{
-      borderRed()
+    } else {
+      borderRed();
     }
-    
-    // window.location.href("/");
   };
- 
 
   //-----------------------------
   return (
     <section className="contact" id="contact">
       <h4>Contactez nous...</h4>
       <div className="container-form">
-        <form >
+        <form>
           <div className="FN_and_LN">
             <label htmlFor="prenom">Prénom</label>
 
             <div className="container_input_p">
               <input
                 onChange={matchFirstName}
-                // className="contact_input"
                 className={
                   isFNBorderRed ? "contact_input borderRed" : "contact_input "
                 }
@@ -193,7 +185,6 @@ export default function Contact(props) {
             <div className="container_input_p">
               <input
                 onChange={matchLastName}
-                // className="contact_input"
                 className={
                   isLNBorderRed ? "contact_input borderRed" : "contact_input "
                 }
@@ -213,13 +204,11 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchEmail}
-              // className="contact_input"
               className={
                 isEmailBorderRed ? "contact_input borderRed" : "contact_input "
               }
               type="email"
               placeholder="Email"
-              // name="email"
               id="email"
               required
             />
@@ -232,7 +221,6 @@ export default function Contact(props) {
           <div className="container_input_p">
             <input
               onChange={matchTel}
-              // className="contact_input"
               className={
                 isTelBorderRed ? "contact_input borderRed" : "contact_input "
               }
@@ -253,7 +241,6 @@ export default function Contact(props) {
               onChange={matchMessage}
               placeholder="Votre message"
               required
-              // className="contact_input"
               className={
                 isMsgBorderRed ? "contact_input borderRed" : "contact_input "
               }
@@ -271,8 +258,9 @@ export default function Contact(props) {
             " sont obligatoires à remplir.
           </p>
           <Link to="/">
-            <button  className="contact_btn"
-            onClick={messagePost}>Envoyer</button>
+            <button className="contact_btn" onClick={messagePost}>
+              Envoyer
+            </button>
           </Link>
         </form>
       </div>

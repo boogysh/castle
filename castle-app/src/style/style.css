@@ -62,11 +62,6 @@
   height: auto;
 }
 /* -------------------------- */
-/* .sticky{
-  position: fixed;
-  top:30%;
-  z-index: 10;
-} */
 .scrolled-down {
   transform: translateY(-100%);
   transition: all 0.3s ease-in-out;
@@ -973,8 +968,6 @@ br {
   display: block;
   width: 60%;
   height: auto;
-  background-color: #92ca92;
-  background-image: url(../assets/images_int/int_napoleon.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

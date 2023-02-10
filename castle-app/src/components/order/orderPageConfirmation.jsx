@@ -6,9 +6,7 @@ import Error500 from "../errors/Error500";
 import Loader from "../common/loader/loader";
 import { nanoid } from "nanoid";
 import OrderFindByEmailByOrderNr from "./orderFindByEmailByOrderNr";
-//import { UseFetch } from "../../hooks/useFetch";
 //import env from "react-dotenv";
-//import Loader from "../common/loader/loader";
 
 export default function OrderPageConfirmation() {
   // const { data } = UseFetch(

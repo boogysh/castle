@@ -21,7 +21,7 @@ export default function Apparements() {
           {""}
         </a>
       </article>
-      {/* ------------- */}
+      {/* ------ */}
       <article className="article_content column_reverse">
         <a
           href={img2}
@@ -44,7 +44,7 @@ export default function Apparements() {
         <a
           href={img3}
           className="article_a chambre_pape"
-          aria-label="petite_chambre"
+          aria-label="chambre pape"
         >
           {""}
         </a>
