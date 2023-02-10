@@ -1,56 +1,24 @@
 import React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import imgCB from "../../assets/cartes_bancaires/cb.jpg";
 import imgCbMaster from "../../assets/cartes_bancaires/master.jpg";
 import imgCbVisa from "../../assets/cartes_bancaires/visa.jpg";
 import imgCbPayPal from "../../assets/cartes_bancaires/paypal.jpg";
 import imgCbAmericanExpress from "../../assets/cartes_bancaires/american_express.jpg";
-import img_search from "../../assets/icons/search.png";
+
 import { HashLink } from "react-router-hash-link";
-import { EMAIL } from "../order/data/data.adviceClient";
+import OrderFindByEmailByOrderNr from "../order/orderFindByEmailByOrderNr";
 
 export default function AsideCart(props) {
-  const [isEmailToFind, setEmailToFind] = useState("");
-  console.log(isEmailToFind);
-  const dispatch = useDispatch();
-
-  const matchEmailToFind = (e) => {
-    const val = e.target.value;
-    const EMAIL_ErrMsg = document.getElementById("orderFindErrorMsg");
-    const matched = val.match(
-      /[a-zA-Z0-9]+[.]?([a-zA-Z0-9]+)?[@][a-z]{3,9}[.][a-z]{2,5}/g
-    );
-    if (val.length === 0) {
-      EMAIL_ErrMsg.innerHTML = "";
-    } else if (val.length < 3 || val.length > 25) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceLength;
-      setEmailToFind("");
-    } else if (matched) {
-      EMAIL_ErrMsg.innerHTML = "";
-      setEmailToFind(val);
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: val,
-      });
-    } else if (!matched) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
-      setEmailToFind("");
-    }
-    dispatch({
-      type: "FIND_EMAIL",
-      payload: val,
-    });
-  };
-  // const dispatchFindEmail= ()=>{
-  //   dispatch({
-  //     type: "FIND_EMAIL",
-  //     payload: isEmailToFind,
-  //   });
-  //   // window.location.reload()
-  // }
   const carts = useSelector((state) => state.cartReducer.carts);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const closeOrderList = () => {
+  //   setIsOpen(!isOpen);
+  // };
+  // const openOrderList = () => {
+  //   setIsOpen(true);
+  // };
   return (
     <aside id="total">
       <div className="total">
@@ -100,30 +68,8 @@ export default function AsideCart(props) {
         <img src={imgCbAmericanExpress} alt="american_express" />
       </div>
       <div className="separe_aside"></div>
-      {/* <OrderFind /> */}
-      <div className="orderFind_container">
-        <h5>Cherceher vos commandes:</h5>
-        <div className="orderFind">
-          <p className="orderFind_p">SAISIR VOTRE ADRESSE E-MAIL :</p>
-          <p>Voir les commandes de: bugavictor86@gmail.com</p>
-          <div className="orderFind_email_container">
-            <input
-              type="text"
-              onChange={matchEmailToFind}
-              className="orderFind_email"
-              placeholder="Votre email"
-            />
-            <button onClick={props.openOrderList} className="orderFind_btn">
-              <img
-                src={img_search}
-                alt="search"
-                className="orderFind_btn_searchPng"
-              />
-            </button>
-          </div>
-          <p id="orderFindErrorMsg" className="error"></p>
-        </div>
-      </div>
+
+      <OrderFindByEmailByOrderNr openOrderList={props.openOrderList} />
     </aside>
   );
 }

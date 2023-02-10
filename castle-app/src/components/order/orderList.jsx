@@ -31,7 +31,7 @@ export default function OrderList(props) {
       } catch (err) {
         console.log(err);
         setError(true);
-      }finally {
+      } finally {
         setLoading(false);
       }
     }
@@ -51,11 +51,16 @@ export default function OrderList(props) {
       </button>
       {data.map((order) => {
         const EMAIL = props.email === order.clientInfo.email;
+        const ORDERNR = props.orderNr === order._id;
+        console.log("ORDERNR:",ORDERNR)
+        console.log("order._id:",order._id)
 
         return (
-          EMAIL && (
+          (EMAIL || ORDERNR)  && (
+          // ORDERNR && (
             <div className="orderList_wrapper">
-              <DropDownOrderList  key={nanoid()}
+              <DropDownOrderList
+                key={nanoid()}
                 title={`Commande Nr: ${order._id} ${order.createdAt.slice(
                   0,
                   10

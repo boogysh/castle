@@ -11,9 +11,10 @@ import OrderList from "../order/orderList";
 import Banner from "../home/banner";
 
 export default function Cart() {
-  const { carts, solde, codeSolde, inputCodeSolde, findEmail } = useSelector(
+  const { carts, solde, codeSolde, inputCodeSolde, findEmail, findOrder } = useSelector(
     (state) => state.cartReducer
   );
+  console.log("findOrder:",findOrder)
   const [data, setData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -117,12 +118,12 @@ export default function Cart() {
       payload: carts,
     });
   };
-  const [isClosed, setIsClosed] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const closeOrderList = () => {
-    setIsClosed(!isClosed);
+    setIsOpen(!isOpen);
   };
   const openOrderList = () => {
-    setIsClosed(true);
+    setIsOpen(true);
   };
 
   return (
@@ -183,11 +184,12 @@ export default function Cart() {
               openOrderList={openOrderList}
             />
           </div>
-          {isClosed && (
+          {isOpen && (
             <OrderList
               email={findEmail}
+              orderNr={findOrder}
               closeOrderList={closeOrderList}
-              isClosed={isClosed}
+              isOpen={isOpen}
             />
           )}
         </div>

@@ -1650,6 +1650,7 @@ label {
   flex-direction: column; */
   font-size: 1.2em;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -1684,7 +1685,7 @@ textarea {
 .orderForm_btn {
   position: relative;
   color: #333;
-
+  margin: 30px auto;
   background: #c2cfd9;
   display: block;
   width: 200px;
@@ -1696,9 +1697,9 @@ textarea {
   font-size: 1.6em;
   border-radius: 999px;
 }
-.contact_btn {
+/* .contact_btn {
   margin: 30px auto;
-}
+} */
 .contact_btn:hover,
 .orderForm_btn:hover {
   background: #b1c2ce;
@@ -2251,11 +2252,12 @@ button {
 }
 
 .orderFind_container {
-  margin-top: 20px;
+  margin: 20px auto 0;
   width: 100%;
-  max-width: 980px;
+  max-width: 960px;
   height: auto;
   border-top: 1px solid black;
+
 }
 
 .orderFind_h5 {
@@ -2325,7 +2327,8 @@ button {
     font-size: 1.7rem;
     margin-bottom: 10px;
   }
-  #total h5 {
+  #total h5,
+  .orderFind_h5 {
     margin-top: 10px;
     font-size: 1rem;
   }
@@ -2342,7 +2345,8 @@ button {
     margin-top: 20px;
   }
   .remise_input,
-  .orderFind_email {
+  .orderFind_email,
+  .orderFind_btn {
     padding-top: 0;
     margin-top: 20px;
   }
@@ -2354,6 +2358,9 @@ button {
   }
 }
 @media screen and (max-width: 320px) {
+  .orderFind_h5{
+    font-size: 0.9rem;
+  }
   .remise_input,
   .orderFind_email {
     font-size: 0.8rem;
