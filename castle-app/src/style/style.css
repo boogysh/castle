@@ -988,7 +988,6 @@ br {
 }
 .etang_carpes {
   background-image: url(../assets/images-ext/ext_2.jpg);
-  /* background-position: bottom; */
 }
 .cour_dHonneur {
   background-image: url(../assets/images-ext/ext_3.jpg);
@@ -2250,7 +2249,6 @@ button {
   max-width: 960px;
   height: auto;
   border-top: 1px solid black;
-
 }
 
 .orderFind_h5 {
@@ -2351,7 +2349,7 @@ button {
   }
 }
 @media screen and (max-width: 320px) {
-  .orderFind_h5{
+  .orderFind_h5 {
     font-size: 0.9rem;
   }
   .remise_input,
