@@ -11,10 +11,17 @@ const initialStore = {
   orderDetails: [],
   email: "",
   findEmail: "",
+  findOrder: "",
 };
 // reducer
 function cartReducer(state = initialStore, action) {
   switch (action.type) {
+    case "FIND_ORDER":
+      return {
+        ...state,
+        findOrder: action.payload,
+      };
+
     case "FIND_EMAIL":
       return {
         ...state,

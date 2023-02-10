@@ -27,5 +27,15 @@ export const MSG = {
   adviceLength: "Message doit contenir minimum 10 caractéres",
   adviceContent:
     "Message contient des caractères non reconnus"
+  };
+  // export const NR_ORDER = {
+  //   adviceLength: "Commande doit contenir 24 caractéres",
+  //   adviceContent: "Commande ne contient pas des accents et des caractères speciaux",
+  // };
+  
+  export const FIND_ORDER = {
+   adviceContent: "Saisie incorrecte où insuffisante",
+  };
 
-};
+
+

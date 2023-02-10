@@ -153,10 +153,11 @@ export default function OrderPage() {
     !isEmail && setEmailBorderRed(true);
   };
   // const allValues = isFN && isLN && isAddress && isCity && isEmail;
-
+  const allValues = isFN && isLN && isAddress && isCity && isEmail;
   const orderPost = (e) => {
     e.preventDefault();
-    if (isFN && isLN && isAddress && isCity && isEmail) {
+    // if (isFN && isLN && isAddress && isCity && isEmail) {
+    if (allValues) {
       // fetch(`${env.API_URL_ORDER}`, {
       fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`, {
         method: "POST",
@@ -175,17 +176,17 @@ export default function OrderPage() {
         type: "SOLDE",
         payload: 0,
       });
+      const redirectOrderConfirmation = async () => {
+        await fetch(
+          `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
+        );
+        window.location.href = "/commande/confirmation";
+      };
+      redirectOrderConfirmation();
     } else {
       borderRed();
     }
-    const redirectOrderConfirmation = async  () => {
-      await fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`);
-      window.location.href = "/commande/confirmation";
-    };
-    redirectOrderConfirmation()
   };
-
-  
 
   return (
     <main id="orderPage">
@@ -211,6 +212,7 @@ export default function OrderPage() {
           }
           submit={(e) => orderPost(e)}
           // REQUIRE={isFN && isLN && isAddress && isCity && isEmail}
+          // isValidate={allValues}
         />
       </div>
     </main>
