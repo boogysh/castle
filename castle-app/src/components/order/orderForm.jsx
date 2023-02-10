@@ -104,33 +104,21 @@ export default function OrderForm(props) {
             </span>{" "}
             " sont obligatoires à remplir.
           </p>
-
-          {/* <div className="contact_btn_container"> */}
-          {/* {props.REQUIRED && <HashLink */}
-          {/* {props.REQUIRE && (
-              <HashLink
-                smooth
-                // to="/commande/confirmation"
-                to="/"
-                className="contact_link"
-                aria-label="valider"
-              ></HashLink>
-            )} */}
-
-          {/* <HashLink onClick={props.submit}  
-            smooth to="/commande/confirmation"
+          {/* {props.isValidate && <button
+            onClick={props.submit} //&& (() => resetInputs()) !!! contact empty
             className="orderForm_btn"
-            
-          >Valider</HashLink> */}
-
-          <button
+            type="submit"
+          >
+            Valider
+          </button>} */}
+         <button
             onClick={props.submit} //&& (() => resetInputs()) !!! contact empty
             className="orderForm_btn"
             type="submit"
           >
             Valider
           </button>
-          {/* </div> */}
+         
         </form>
       </div>
     </section>
