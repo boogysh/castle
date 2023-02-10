@@ -51,6 +51,10 @@ export default function Orderfind_ByEmail_byOrderNr(props) {
         type: "FIND_ORDER",
         payload: val,
       });
+      dispatch({
+        type: "FIND_EMAIL",
+        payload: "",
+      });
       //   setFIND_ORDERBorderRed(false);
     } else if (matched2) {
       FIND_ORDER_ErrMsg.innerHTML = "";
@@ -58,6 +62,10 @@ export default function Orderfind_ByEmail_byOrderNr(props) {
       dispatch({
         type: "FIND_EMAIL",
         payload: val,
+      });
+      dispatch({
+        type: "FIND_ORDER",
+        payload: "",
       });
       //   setFIND_ORDERBorderRed(false);
     } else if (!matched) {
