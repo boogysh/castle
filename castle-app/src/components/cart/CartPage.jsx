@@ -24,19 +24,14 @@ export default function Cart() {
 
   //------- Price without solde----------------------
   useEffect(() => {
-    // const totals = () => {
     let totalPrice = 0;
     data.map((e) => {
       return (totalPrice = e.price * e.qty + totalPrice);
     });
     setTotalPrice(totalPrice);
-    // };
   }, [data]);
 
-  // useEffect(() => {
-
-  //   totals();
-  // }, [totals]);
+  
 
   //-------CART OPERATIONS--------------------------------
   const dispatch = useDispatch();
@@ -139,7 +134,6 @@ export default function Cart() {
                   <h4 className="cart_empty_h3">Votre panier est vide</h4>
 
                   <HashLink smooth to="/#tarifs" className="cart_nav_item">
-                    {/* Tarifs */}
                     <div className="tickets">
                       <img
                         className="tickets_img"
@@ -194,9 +188,7 @@ export default function Cart() {
           )}
         </div>
 
-        {/* {console.log("findEmail:", findEmail)} */}
       </section>
-      {/* <Contact /> */}
     </main>
   );
 }

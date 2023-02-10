@@ -1,5 +1,4 @@
 import React from "react";
-// import { useState } from "react";
 import { useSelector } from "react-redux";
 import imgCB from "../../assets/cartes_bancaires/cb.jpg";
 import imgCbMaster from "../../assets/cartes_bancaires/master.jpg";
@@ -12,13 +11,7 @@ import OrderFindByEmailByOrderNr from "../order/orderFindByEmailByOrderNr";
 
 export default function AsideCart(props) {
   const carts = useSelector((state) => state.cartReducer.carts);
-  // const [isOpen, setIsOpen] = useState(false);
-  // const closeOrderList = () => {
-  //   setIsOpen(!isOpen);
-  // };
-  // const openOrderList = () => {
-  //   setIsOpen(true);
-  // };
+  
   return (
     <aside id="total">
       <div className="total">

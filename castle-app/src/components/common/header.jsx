@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 import { connect } from "react-redux";
 import HeaderBurger from "../../components/common/header-burger/HeaderBurger";
 import tickets from "../../assets/icons/tickets.png";
-
-import "../../style/style.css";
+// import "../../style/style.css";
 
 export default function Header() {
   const dataCart = useSelector((state) => state.cartReducer.carts);
@@ -29,39 +28,23 @@ export default function Header() {
   };
   //-------------HIDE-NAVBAR-ON-SCROLL-----------------------------
 
-  // const el_autohide = document.querySelector(".autohide");
-  // if (el_autohide) {
-  //   let last_scroll_top = 0;
-  //   window.addEventListener("scroll", function () {
-  //     let scroll_top = window.scrollY;
-  //     if (scroll_top < last_scroll_top) {
-  //       el_autohide.classList.remove("scrolled-down");
-  //       el_autohide.classList.add("scrolled-up");
-  //     } else {
-  //       el_autohide.classList.remove("scrolled-up");
-  //       el_autohide.classList.add("scrolled-down");
-  //     }
-  //     last_scroll_top = scroll_top;
-  //   });
-  // }
-
   const [lastScroll, setLastScroll] = useState(0);
-  useEffect(()=>{
+  useEffect(() => {
     const el_autohide = document.querySelector(".autohide");
-  if (el_autohide) {
-    window.addEventListener("scroll", function () {
-      const scrollTop = window.scrollY;
-      if (scrollTop < lastScroll) {
-        el_autohide.classList.remove("scrolled-down");
-        el_autohide.classList.add("scrolled-up");
-      } else {
-        el_autohide.classList.remove("scrolled-up");
-        el_autohide.classList.add("scrolled-down");
-      }
-      setLastScroll(scrollTop);
-    });
-  }
-  },[lastScroll])
+    if (el_autohide) {
+      window.addEventListener("scroll", function () {
+        const scrollTop = window.scrollY;
+        if (scrollTop < lastScroll) {
+          el_autohide.classList.remove("scrolled-down");
+          el_autohide.classList.add("scrolled-up");
+        } else {
+          el_autohide.classList.remove("scrolled-up");
+          el_autohide.classList.add("scrolled-down");
+        }
+        setLastScroll(scrollTop);
+      });
+    }
+  }, [lastScroll]);
 
   return (
     <div className="container_header">

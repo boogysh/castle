@@ -67,7 +67,6 @@ export default function Tarifs() {
                   <span role="img" aria-label="x">
                     {items.li_6}
                   </span>
-                  {/* <p>Accès à des lieux interdits au public</p> */}
                   <p>Accès à des lieux exclusifs</p>
                 </li>
               </ul>
