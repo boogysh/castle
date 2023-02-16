@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FN, LN, ADDRESS, CITY, EMAIL } from "./data/data.adviceClient";
+import { FN, LN, ADDRESS, CITY, E_MAIL } from "./data/data.adviceClient";
 import OrderForm from "./orderForm";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch  } from "react-redux";
 import Banner from "../home/banner";
+import { EMAIL, CLEAN_CART, SOLDE } from "../../redux/action";
 //import env from "react-dotenv";
 
 export default function OrderPage() {
@@ -110,14 +110,14 @@ export default function OrderPage() {
     );
     if (val.length === 0) EMAIL_ErrMsg.innerHTML = "";
     else if (val.length < 3 || val.length > 25) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceLength;
+      EMAIL_ErrMsg.innerHTML = E_MAIL.adviceLength;
       setEmail("");
     } else if (matched) {
       EMAIL_ErrMsg.innerHTML = "";
       setEmail(val);
       setEmailBorderRed(false);
     } else if (!matched) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
+      EMAIL_ErrMsg.innerHTML = E_MAIL.adviceContent;
       setEmail("");
     }
   };
@@ -159,18 +159,10 @@ export default function OrderPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order),
       });
-      dispatch({
-        type: "EMAIL",
-        payload: client.email,
-      });
-      dispatch({
-        type: "CLEAN_CART",
-        payload: [],
-      });
-      dispatch({
-        type: "SOLDE",
-        payload: 0,
-      });
+      dispatch(EMAIL(client.email));
+      dispatch(CLEAN_CART([]));
+      dispatch(SOLDE(0));
+
       const redirectOrderConfirmation = async () => {
         await fetch(
           `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
@@ -206,7 +198,6 @@ export default function OrderPage() {
             isEmailBorderRed ? "contact_input borderRed" : "contact_input"
           }
           submit={(e) => orderPost(e)}
-          
         />
       </div>
     </main>

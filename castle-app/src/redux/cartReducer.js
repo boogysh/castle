@@ -1,5 +1,5 @@
 // import { ADD_CART, REMOVE, REMOVE_ITEM } from "./type";
-import { SOLDE } from "./type";
+//import { SOLDE } from "./type";
 
 const initialStore = {
   carts: [],
@@ -50,7 +50,7 @@ function cartReducer(state = initialStore, action) {
         ...state,
         clientInfo: action.payload,
       };
-    case SOLDE:
+    case "SOLDE":
       return {
         ...state,
         solde: action.payload,

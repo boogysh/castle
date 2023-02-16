@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import img_search from "../../assets/icons/search.png";
 // import { useSelector } from "react-redux";
-import { FIND_ORDER } from "./data/data.adviceClient";
+import { FIND_ORDER_NR } from "./data/data.adviceClient";
 import { useDispatch } from "react-redux";
+import { FIND_ORDER, FIND_EMAIL } from "../../redux/action";
 
 export default function Orderfind_ByEmail_byOrderNr(props) {
   const dispatch = useDispatch();
@@ -25,67 +26,41 @@ export default function Orderfind_ByEmail_byOrderNr(props) {
     if (val.length === 0) {
       FIND_ORDER_ErrMsg.innerHTML = "";
       setFindOrder("");
-      dispatch({
-        type: "FIND_ORDER",
-        payload: "",
-      });
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: "",
-      });
+      dispatch(FIND_ORDER(""));
+      dispatch(FIND_EMAIL(""));
     } else if (val.length < 5 || val.length > 24) {
-      FIND_ORDER_ErrMsg.innerHTML = FIND_ORDER.adviceContent;
+      FIND_ORDER_ErrMsg.innerHTML = FIND_ORDER_NR.adviceContent;
       setFindOrder("");
-      dispatch({
-        type: "FIND_ORDER",
-        payload: "",
-      });
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: "",
-      });
+      dispatch(FIND_ORDER(""));
+      dispatch(FIND_EMAIL(""));
     } else if (matched) {
       FIND_ORDER_ErrMsg.innerHTML = "";
       setFindOrder(val);
-      dispatch({
-        type: "FIND_ORDER",
-        payload: val,
-      });
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: "",
-      });
+      dispatch(FIND_ORDER(val));
+      dispatch(FIND_EMAIL(""));
+
       //   setFIND_ORDERBorderRed(false);
     } else if (matched2) {
       FIND_ORDER_ErrMsg.innerHTML = "";
       setEmailToFind(val);
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: val,
-      });
-      dispatch({
-        type: "FIND_ORDER",
-        payload: "",
-      });
+      dispatch(FIND_EMAIL(val));
+      dispatch(FIND_ORDER(""));
+
       //   setFIND_ORDERBorderRed(false);
     } else if (!matched) {
-      FIND_ORDER_ErrMsg.innerHTML = FIND_ORDER.adviceContent;
+      FIND_ORDER_ErrMsg.innerHTML = FIND_ORDER_NR.adviceContent;
       setFindOrder("");
-      dispatch({
-        type: "FIND_ORDER",
-        payload: "",
-      });
-      dispatch({
-        type: "FIND_EMAIL",
-        payload: "",
-      });
+      dispatch(FIND_ORDER(""));
+      dispatch(FIND_EMAIL(""));
     }
   };
   return (
     <div className="orderFind_container">
       <h5 className="orderFind_h5">Chercher vos commandes:</h5>
       <div className="orderFind">
-        <p className="orderFind_p"><strong>Saisir votre e-mail où le nr. de commande :</strong></p>
+        <p className="orderFind_p">
+          <strong>Saisir votre e-mail où le nr. de commande :</strong>
+        </p>
         {/* <p>ADRESSE E-MAIL où NR DE COMMANDE:</p> */}
         <p>EX: bugavictor86@gmail.com</p>
         <p>EX: 63e61b3b69cbd5198b876894</p>

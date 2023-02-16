@@ -3,18 +3,26 @@ import { useSelector, connect, useDispatch } from "react-redux";
 import { HashLink } from "react-router-hash-link";
 import tickets from "../../assets/icons/tickets.png";
 import CartCard from "./cartCard";
-// import { DELETE, ADD} from "../../redux/action";
-import { SOLDE_AMOUNT } from "../../redux/action";
+//---------------------------------------
+import {
+  SOLDE,
+  INPUT_CODE_SOLDE,
+  REMOVE_CARD,
+  ADD_ITEM,
+  REMOVE_ITEM,
+  PRICE,
+  ORDER_DETAILS,
+} from "../../redux/action";
+//---------------------------------------
 import AsideCart from "./asideCart";
 import { v4 as uuidv4 } from "uuid";
 import OrderList from "../order/orderList";
 import Banner from "../home/banner";
 
 export default function Cart() {
-  const { carts, solde, codeSolde, inputCodeSolde, findEmail, findOrder } = useSelector(
-    (state) => state.cartReducer
-  );
-  console.log("findOrder:",findOrder)
+  const { carts, solde, codeSolde, inputCodeSolde, findEmail, findOrder } =
+    useSelector((state) => state.cartReducer);
+  console.log("findOrder:", findOrder);
   const [data, setData] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -31,34 +39,21 @@ export default function Cart() {
     setTotalPrice(totalPrice);
   }, [data]);
 
-  
-
   //-------CART OPERATIONS--------------------------------
   const dispatch = useDispatch();
   // delete one card
   const delet = (id) => {
-    // dispatch(DELETE(id));
-    dispatch({
-      type: "REMOVE_CARD",
-      payload: id,
-    });
+    dispatch(REMOVE_CARD(id));
   };
   // incr cart
   const increment = (item) => {
-    // dispatch(ADD(item));
     if (item.qty <= 99) {
-      dispatch({
-        type: "ADD_ITEM",
-        payload: item,
-      });
+      dispatch(ADD_ITEM(item));
     }
   };
+  // decr cart
   const decrement = (item) => {
-    // dispatch(ADD(item));
-    dispatch({
-      type: "REMOVE_ITEM",
-      payload: item,
-    });
+    dispatch(REMOVE_ITEM(item));
   };
   //-------------------------------------------------------
   //Set the class "emty" to the empty cart
@@ -68,50 +63,31 @@ export default function Cart() {
 
   //-------Solde-----------------
   const soldePrice = (e) => {
-    dispatch({
-      type: "INPUT_CODE_SOLDE",
-      payload: e.target.value,
-    });
+    dispatch(INPUT_CODE_SOLDE(e.target.value));
     if (codeSolde === e.target.value) {
-      dispatch(SOLDE_AMOUNT(totalPrice, 5, e)); //5percents
+      dispatch(SOLDE((totalPrice * 5) / 100, e)); //5percents
     } else {
-      dispatch(SOLDE_AMOUNT(totalPrice, 0)); //expected payload: 0
-      //   type: "SOLDE",
-      //   payload: 0,
-      // });
+      dispatch(SOLDE(totalPrice, 0)); //expected payload: 0
     }
   };
   const btnSolde = () => {
     const updatePayload = (totalPrice * 5) / 100;
     if (codeSolde === inputCodeSolde) {
-      dispatch({
-        type: "SOLDE",
-        payload: updatePayload,
-      });
+      dispatch(SOLDE(updatePayload));
     } else {
-      dispatch({
-        type: "SOLDE",
-        payload: 0,
-      });
+      dispatch(SOLDE(0));
     }
   };
   //-----///  PRICE & SOLDE = total price///---------
   useEffect(() => {
     const orderPrice = totalPrice - solde;
-    dispatch({
-      type: "PRICE",
-      payload: orderPrice,
-    });
+    dispatch(PRICE(orderPrice));
   }, [dispatch, totalPrice, solde]);
-  //--------------------------------------
-  
 
-  //----------------------------------
+  //--------------------------------------
+
   const createOrderDetails = () => {
-    dispatch({
-      type: "ORDER_DETAILS",
-      payload: carts,
-    });
+    dispatch(ORDER_DETAILS(carts));
   };
   const [isOpen, setIsOpen] = useState(false);
   const closeOrderList = () => {
@@ -187,7 +163,6 @@ export default function Cart() {
             />
           )}
         </div>
-
       </section>
     </main>
   );

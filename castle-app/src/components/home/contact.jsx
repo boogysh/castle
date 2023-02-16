@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FN, LN, TEL, EMAIL, MSG } from "../order/data/data.adviceClient";
+import { FN, LN, TEL, E_MAIL, MSG } from "../order/data/data.adviceClient";
 //import env from "react-dotenv";
 
 export default function Contact(props) {
@@ -68,14 +68,14 @@ export default function Contact(props) {
     );
     if (val.length === 0) EMAIL_ErrMsg.innerHTML = "";
     else if (val.length < 3 || val.length > 25) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceLength;
+      EMAIL_ErrMsg.innerHTML = E_MAIL.adviceLength;
       setEmail("");
     } else if (matched) {
       EMAIL_ErrMsg.innerHTML = "";
       setEmail(val);
       setEmailBorderRed(false);
     } else if (!matched) {
-      EMAIL_ErrMsg.innerHTML = EMAIL.adviceContent;
+      EMAIL_ErrMsg.innerHTML = E_MAIL.adviceContent;
       setEmail("");
     }
   };

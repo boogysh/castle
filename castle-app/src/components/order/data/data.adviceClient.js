@@ -13,7 +13,7 @@ export const CITY = {
   adviceLength: "Ville doit contenir entre 3 et 25 caractéres",
   adviceContent: "Ville contient que des majuscules et minuscules",
 };
-export const EMAIL = {
+export const E_MAIL = {
   adviceLength: "Email doit contenir entre 5 et 25 caractéres",
   adviceContent:
     "Email incorrect. Ex: pierre@gmail.com où pierre.dubois@gmail.com",
@@ -33,7 +33,7 @@ export const MSG = {
   //   adviceContent: "Commande ne contient pas des accents et des caractères speciaux",
   // };
   
-  export const FIND_ORDER = {
+  export const FIND_ORDER_NR = {
    adviceContent: "Saisie incorrecte où insuffisante",
   };
 
