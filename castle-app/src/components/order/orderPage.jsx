@@ -154,16 +154,19 @@ export default function OrderPage() {
   };
   // const allValues = isFN && isLN && isAddress && isCity && isEmail;
   const allValues = isFN && isLN && isAddress && isCity && isEmail;
-  const orderPost = (e) => {
+  const orderPost = async (e) => {
     e.preventDefault();
     // if (isFN && isLN && isAddress && isCity && isEmail) {
     if (allValues) {
       // fetch(`${env.API_URL_ORDER}`, {
-      fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
-      });
+      const response = await fetch(
+        `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(order),
+        }
+      );
       dispatch({
         type: "EMAIL",
         payload: client.email,
@@ -176,13 +179,9 @@ export default function OrderPage() {
         type: "SOLDE",
         payload: 0,
       });
-      const redirectOrderConfirmation = async () => {
-        await fetch(
-          `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
-        );
-        window.location.href = "/commande/confirmation";
-      };
-      redirectOrderConfirmation();
+      const orderInfo = response.json;
+      console.log("orderInfo", orderInfo);
+      orderInfo && (window.location.href = "/commande/confirmation");
     } else {
       borderRed();
     }
