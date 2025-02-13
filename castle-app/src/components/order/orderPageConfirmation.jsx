@@ -18,7 +18,7 @@ export default function OrderPageConfirmation() {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
-  const url = `castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`;
+  const url = `https://castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`;
   //const url = `http://localhost:4000/api/commandes`;
   useEffect(() => {
     if (!url) return;

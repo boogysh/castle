@@ -160,7 +160,7 @@ export default function OrderPage() {
     if (allValues) {
       // fetch(`${env.API_URL_ORDER}`, {
       const response = await fetch(
-        `castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`,
+        `https://castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`,
         //`http://localhost:4000/api/commandes`,
         {
           method: "POST",

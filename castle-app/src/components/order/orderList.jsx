@@ -20,7 +20,7 @@ export default function OrderList(props) {
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
   //const url = `http://localhost:4000/api/commandes`;
-  const url = `castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`;
+  const url = `https://castle-8664uf684-boogyshs-projects.vercel.app/api/commandes`;
   useEffect(() => {
     if (!url) return;
     setLoading(true);
@@ -53,12 +53,12 @@ export default function OrderList(props) {
       {data.map((order) => {
         const EMAIL = props.email === order.clientInfo.email;
         const ORDERNR = props.orderNr === order._id;
-        console.log("ORDERNR:",ORDERNR)
-        console.log("order._id:",order._id)
+        console.log("ORDERNR:", ORDERNR);
+        console.log("order._id:", order._id);
 
         return (
-          (EMAIL || ORDERNR)  && (
-          // ORDERNR && (
+          (EMAIL || ORDERNR) && (
+            // ORDERNR && (
             <div className="orderList_wrapper">
               <DropDownOrderList
                 key={nanoid()}
