@@ -15,7 +15,7 @@ export default function OrderList(props) {
   const [data, setData] = useState({});
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
-  const url = `https://castle-4zrcgold4-boogyshs-projects.vercel.app/api/commandes`;
+  const url = `https://castle-api.vercel.app/api/commandes`;
   useEffect(() => {
     if (!url) return;
     setLoading(true);
