@@ -165,7 +165,7 @@ export default function OrderPage() {
 
       const redirectOrderConfirmation = async () => {
         await fetch(
-          `https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`
+          `https://castle-4zrcgold4-boogyshs-projects.vercel.app/api/commandes`
         );
         window.location.href = "/commande/confirmation";
       };
