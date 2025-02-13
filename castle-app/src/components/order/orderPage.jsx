@@ -154,7 +154,7 @@ export default function OrderPage() {
     e.preventDefault();
     if (allValues) {
       // fetch(`${env.API_URL_ORDER}`, {
-      fetch(`https://castle-nmy1u5b1u-boogysh.vercel.app/api/commandes`, {
+      fetch(`https://ccastle-637wiwwcy-boogyshs-projects.vercel.app/api/commandes`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order),
